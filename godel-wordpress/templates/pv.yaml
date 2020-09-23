@@ -1,0 +1,14 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ .Values.volumeName }}
+  labels: 
+{{ include "godel-wordpress.labels" . | indent 4 }}
+spec:
+  capacity: 
+    storage: {{ .Values.persistence.size | quote }}
+  accessModes:
+    - {{ .Values.persistence.accessMode | quote }}
+  storageClassName: {{ .Values.storageClassName}}
+  hostPath:
+    path: /data/html

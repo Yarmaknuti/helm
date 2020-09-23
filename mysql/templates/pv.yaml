@@ -1,0 +1,14 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ .Values.volumeName }}
+  labels: 
+    app.kubernetes.io/name: {{ .Values.appName }}
+spec:
+  capacity: 
+    storage: {{ .Values.persistence.size | quote }}
+  accessModes:
+    - {{ .Values.persistence.accessMode | quote }}
+  storageClassName: {{ .Values.storageClassName}}
+  hostPath:
+    path: /data/mysql
