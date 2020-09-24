@@ -9,7 +9,7 @@ tier: frontend
 
 image:
   repository: wordpress
-  tag: 4.8-apache
+  tag: 5.1.0
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
