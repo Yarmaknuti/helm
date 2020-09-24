@@ -4,6 +4,7 @@
 
 replicaCount: 1
 
+app: wordpress
 tier: frontend
 
 image:
@@ -48,6 +49,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
+  name: wordpress
   type: LoadBalancer
   port: 80
 

@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "godel-wordpress.fullname" . -}}
+{{- $fullName := .Values.app -}}
 {{- $svcPort := .Values.service.port -}}
 {{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
@@ -9,8 +9,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
-  labels:
-{{ include "godel-wordpress.labels" . | indent 4 }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
